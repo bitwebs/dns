@@ -102,7 +102,7 @@ test('wal clearing', async () => {
     walCheckInterval: 10,
     maxWalSize: 2
   })
-  await cache.set('hyper', 'bee', { key: null, expires: Date.now() })
+  await cache.set('bit', 'tree', { key: null, expires: Date.now() })
   await new Promise((resolve) => setTimeout(resolve, 100))
   cache.close()
 })
@@ -112,6 +112,6 @@ test('gracefully handling not working db', async t => {
   const cache = createCacheSqlite({
     file // Should not work, since the file is a directory
   })
-  t.equals(await cache.get('hyper', 'bee'), undefined)
-  await cache.set('hyper', 'bee', { key: null, expires: Date.now() })
+  t.equals(await cache.get('bit', 'tree'), undefined)
+  await cache.set('bit', 'tree', { key: null, expires: Date.now() })
 })

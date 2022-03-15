@@ -11,7 +11,7 @@ test('Successful test against cblgh.org', async t => {
 const ecosystem = 'dns-test-setup.dat-ecosystem.org'
 test(`Successful test against ${ecosystem}`, async t => {
   const datKey = '444231b5589a5099aa3610a8ee550dcd454c3e33f4cac93b7d41b6b850cde444'
-  const hyperKey = '000978b5589a5099aa3610a8ee550dcd454c3e33f4cac93b7d41b6b850cde000'
+  const bitKey = '000978b5589a5099aa3610a8ee550dcd454c3e33f4cac93b7d41b6b850cde000'
   t.equals(
     (await resolveURL(`dat://${ecosystem}`, { cache: null })).href,
     `dat://${datKey}`
@@ -23,7 +23,7 @@ test(`Successful test against ${ecosystem}`, async t => {
       ara: null,
       cabal: null,
       dat: datKey,
-      hyper: hyperKey
+      bit: bitKey
     }
   )
 })

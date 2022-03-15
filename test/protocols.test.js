@@ -49,35 +49,35 @@ const { matchRegex } = require('../resolve-context.js')
 })()
 
 ;(() => {
-  const { hyper } = protocols
+  const { bit } = protocols
   const key = '100c77d788fdaf07b89b28e9d276e47f2e44011f4adb981921056e1b3b40e99e'
-  test('hyper: local urls', async t => {
+  test('bit: local urls', async t => {
     t.deepEquals(
-      await hyper({ matchRegex }, key),
+      await bit({ matchRegex }, key),
       { key, ttl: null }
     )
   })
-  test('hyper: looking for hyper dns records', async t => {
-    const name = 'dat-ecosystem.org'
+  test('bit: looking for bit dns records', async t => {
+    const name = 'bitwebs.org'
     t.plan(3)
     t.deepEquals(
-      await hyper({
+      await bit({
         matchRegex,
         async getDNSTxtRecord (domain, regex) {
           t.equals(domain, name)
-          t.match(`hyperkey=${key}`, regex)
+          t.match(`bitkey=${key}`, regex)
           return { key, ttl: 10 }
         }
       }, name),
       { key, ttl: 10 }
     )
   })
-  test('hyper: looking for datkey dns records', async t => {
-    const name = 'dat-ecosystem.org'
+  test('bit: looking for datkey dns records', async t => {
+    const name = 'bitwebs.org'
     t.plan(5)
     let calls = 0
     t.deepEquals(
-      await hyper({
+      await bit({
         matchRegex,
         async getDNSTxtRecord (domain, regex) {
           calls += 1
@@ -94,11 +94,11 @@ const { matchRegex } = require('../resolve-context.js')
       { key, ttl: 10 }
     )
   })
-  test('hyper: looking for well-known hyper record', async t => {
-    const name = 'dat-ecosystem.org'
+  test('bit: looking for well-known bit record', async t => {
+    const name = 'bitwebs.org'
     t.plan(9)
     t.deepEquals(
-      await hyper({
+      await bit({
         matchRegex,
         isLocal: () => false,
         async getDNSTxtRecord () {
@@ -108,22 +108,22 @@ const { matchRegex } = require('../resolve-context.js')
         async fetchWellKnown (domain, schema, regex, redirects) {
           t.equals(redirects, 6)
           t.equals(domain, name)
-          t.equals(schema, 'hyper')
+          t.equals(schema, 'bit')
           t.match(key, regex)
-          t.match(`hyper:${key}`, regex)
-          t.match(`hyper://${key}`, regex)
+          t.match(`bit:${key}`, regex)
+          t.match(`bit://${key}`, regex)
           return { key, ttl: 10 }
         }
       }, name),
       { key, ttl: 10 }
     )
   })
-  test('hyper: falling back to well-known dat record', async t => {
-    const name = 'dat-ecosystem.org'
+  test('bit: falling back to well-known dat record', async t => {
+    const name = 'bitwebs.org'
     t.plan(11)
     let calls = 0
     t.deepEquals(
-      await hyper({
+      await bit({
         matchRegex,
         isLocal: () => false,
         async getDNSTxtRecord () {
@@ -133,7 +133,7 @@ const { matchRegex } = require('../resolve-context.js')
         async fetchWellKnown (domain, schema, regex, redirects) {
           calls += 1
           if (calls === 1) {
-            t.pass('hyper well known returns undefined')
+            t.pass('bit well known returns undefined')
             return undefined
           }
           t.equals(calls, 2)
@@ -149,11 +149,11 @@ const { matchRegex } = require('../resolve-context.js')
       { key, ttl: 10 }
     )
   })
-  test('hyper: looking for well-known may miss', async t => {
-    const name = 'dat-ecosystem.org'
+  test('bit: looking for well-known may miss', async t => {
+    const name = 'bitwebs.org'
     t.plan(5)
     t.deepEquals(
-      await hyper({
+      await bit({
         matchRegex,
         isLocal: () => false,
         async getDNSTxtRecord (_name, regex) {

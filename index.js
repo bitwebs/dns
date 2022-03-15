@@ -1,5 +1,5 @@
 const resolveTxt = require('util').promisify(require('dns').resolveTxt)
-const debug = require('debug')('hyper-dns')
+const debug = require('debug')('bit-dns')
 const base = require('./resolve.js')
 let createCacheSqlite
 let cache

@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const Database = require('better-sqlite3')
 const envPaths = require('env-paths')
-const debug = require('debug')('hyper-dns')
+const debug = require('debug')('bit-dns')
 const createCacheLRU = require('./cache-lru.js')
 
 const Q_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS $table (name TEXT NOT NULL, protocol TEXT NOT NULL, updated INTEGER NOT NULL, key TEXT, expires INTEGER NOT NULL, PRIMARY KEY (name, protocol))'
@@ -192,7 +192,7 @@ createCacheSqlite.DEFAULTS = Object.freeze({
   autoClose: 5000,
   maxWalSize: 10 * 1024 * 1024, // 10 MB
   walCheckInterval: 5000, // 5s
-  file: path.join(envPaths('hyper-dns', { suffix: '' }).cache, 'cache.db')
+  file: path.join(envPaths('bit-dns', { suffix: '' }).cache, 'cache.db')
 })
 
 module.exports = Object.freeze(createCacheSqlite)

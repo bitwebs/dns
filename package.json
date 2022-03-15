@@ -1,7 +1,7 @@
 {
-  "name": "hyper-dns",
-  "version": "0.12.0",
-  "description": "DNS lookup for dat/hyper archives",
+  "name": "@web4/dns",
+  "version": "1.0.0",
+  "description": "DNS lookup for dat/bit archives",
   "main": "index.js",
   "browser": "browser.js",
   "types": "index.d.ts",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/martinheidegger/hyper-dns.git"
+    "url": "git+https://github.com/bitwebs/dns.git"
   },
   "keywords": [
     "dat",
@@ -24,9 +24,9 @@
   "author": "Martin Heidegger <martin.heidegger@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/martinheidegger/hyper-dns/issues"
+    "url": "https://github.com/bitwebs/dns/issues"
   },
-  "homepage": "https://github.com/martinheidegger/hyper-dns#readme",
+  "homepage": "https://github.com/bitwebs/dns#readme",
   "dependencies": {
     "@consento/promise": "^1.0.7",
     "debug": "^4.3.1",

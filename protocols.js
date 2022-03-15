@@ -10,12 +10,12 @@ module.exports = Object.freeze({
     }
     return await context.fetchWellKnown(name, 'dat', /^\s*(?:dat:)?(?:\/\/)?(?<key>[0-9a-f]{64})\s*$/i, 6)
   },
-  async hyper (context, name) {
+  async bit (context, name) {
     let record = context.matchRegex(name, /^(?<key>[0-9a-f]{64})$/i)
     if (record !== undefined) {
       return record
     }
-    record = await context.getDNSTxtRecord(name, /^\s*"?hyperkey=(?<key>[0-9a-f]{64})"?\s*$/i)
+    record = await context.getDNSTxtRecord(name, /^\s*"?bitkey=(?<key>[0-9a-f]{64})"?\s*$/i)
     if (record !== undefined) {
       return record
     }
@@ -23,7 +23,7 @@ module.exports = Object.freeze({
     if (record !== undefined) {
       return record
     }
-    record = await context.fetchWellKnown(name, 'hyper', /^\s*(?:(?:dat|hyper):)?(?:\/\/)?(?<key>[0-9a-f]{64})\s*$/i, 6)
+    record = await context.fetchWellKnown(name, 'bit', /^\s*(?:(?:dat|bit):)?(?:\/\/)?(?<key>[0-9a-f]{64})\s*$/i, 6)
     if (record !== undefined) {
       return record
     }

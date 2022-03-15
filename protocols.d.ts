@@ -4,7 +4,7 @@ declare namespace protocols {
   type Protocol = (context: ResolveContext, name: string) => Promise<LookupEntry | undefined>
 
   const dat: Protocol
-  const hyper: Protocol
+  const bit: Protocol
   const ara: Protocol
   const cabal: Protocol
 }

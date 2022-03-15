@@ -1,6 +1,6 @@
 const { stringify } = require('querystring')
 const { bubbleAbort } = require('@consento/promise/bubbleAbort')
-const debug = require('debug')('hyper-dns')
+const debug = require('debug')('bit-dns')
 
 const TTL_REGEX = /^ttl=(\d+)$/i
 
